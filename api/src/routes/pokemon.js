@@ -4,7 +4,57 @@ const axios = require("axios");
 const { Pokemon, Tipo } = require("../db");
 const { Op } = require("sequelize");
 
-router.get("/", async function (req, res, next) {
+
+const idSearchApi = async(id) => {
+  try {                          
+      const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`) 
+      return {
+          id: poke.data.id,
+          name: poke.data.name,
+          life: poke.data.stats[0].base_stat,
+          attack: poke.data.stats[1].base_stat,
+          defense: poke.data.stats[2].base_stat,
+          speed: poke.data.stats[5].base_stat,
+          height: poke.data.height,
+          weight: poke.data.weight,
+          types: poke.data.types.map(pt => pt.type),
+          image: poke.data.sprites.other.home.front_default,
+      };
+  } catch (e) {
+      console.log(e);
+  };
+};
+
+
+const idSearchDB = async (id) => {
+  try {
+      const poke = await Pokemon.findByPk(id, {
+          include: {
+              model: Tipo,
+              attributes: ["name"],
+              through: {
+                  attributes: []
+              }
+          }
+      });
+      return poke;
+  } catch {
+      return undefined;
+  };
+};
+
+
+const idSearch = async(id) => {
+  const api = idSearchApi(id);
+  const db = idSearchDB(id);
+
+  const [ apiPoke, dbPoke ] = await Promise.all([api, db])
+  return apiPoke || dbPoke;
+};
+
+
+
+router.get("/", async(req, res, next) =>{
   const { name } = req.query;
 
   try {
@@ -86,5 +136,33 @@ router.get("/", async function (req, res, next) {
     console.log(e)
   }
 });
+
+
+router.get('/:id', async (req, res)=> {
+  try {
+    const id = req.params.id;
+    const idDetails = await idSearch(id);
+    if (!idDetails) {
+        return res.status(404).send("No hay ningun pokemon con ese ID")
+    }
+    res.status(200).json(idDetails);
+  } catch (err) {
+    console.log(err)
+}
+})
+
+router.post('/pokemon', async (req, res) => {
+  let = {name, life, attack, defense, speed, height, weight, types, image} = req.body;
+  try{
+    let nuevopoke = await Pokemon.create({name:name.toLowerCase(),hp, attack, defense, speed, height, weight, image})
+
+    let typesDb = await Tipo.findAll({where:{name:types}})
+    nuevopoke.addType()
+
+  }catch{
+
+  }
+})
+
 
 module.exports = router;
