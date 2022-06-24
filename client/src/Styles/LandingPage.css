@@ -1,0 +1,10 @@
+.background {
+    height: 100%;
+    width: 100%;
+    background-image: url('https://images4.alphacoders.com/661/661563.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: fixed;
+}

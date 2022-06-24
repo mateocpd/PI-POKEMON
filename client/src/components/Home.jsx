@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPokemons } from "../actions";
 
+
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
@@ -18,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div >
       <Link to="/pokemon">Crear Pokemon</Link>
       <h1>Pokemones buenosxd</h1>
       <button
