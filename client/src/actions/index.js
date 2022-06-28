@@ -43,3 +43,16 @@ export function filterByType (payload) {
     }
 }
 
+export function orderByAttack(payload){
+    return {
+        type: "ORDER_BY_ATTACK",
+        payload
+    }
+}
+
+export function filterApi (payload) {
+    return {
+        type: "FILTER_API",
+        payload
+    }
+}

@@ -21,6 +21,8 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 pokemons: onePoke.length ? onePoke : noPoke.concat(alert("No hay ningun pokemon con ese nombre. Mostrando todos los pokemons:"))
             }
+        default:
+            return state
     }
 }
 export default rootReducer;

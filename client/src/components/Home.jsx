@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPokemons } from "../actions";
 import Paginado from './Paginado';
-import {orderByAbc, filterByType} from '../actions'
+import {orderByAbc, filterByType, orderByAttack, filterApi} from '../actions'
 
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const allTypes = useSelector((state) => state.pokemonsTypes);
+  const allTypes = useSelector((state) => console.log(state.pokemonsTypes));
 
   const [current, setCurrent] = useState(1)
   const [pokemonsPage, setPokemonsPage] = useState(12)
@@ -44,10 +44,22 @@ export default function Home() {
     dispatch(filterByType(e.target.value))
   }
 
+  function handleOrderByAttack(e){
+    e.preventDefault();
+    dispatch(orderByAttack(e.target.value))
+    setCurrent(1)
+    setOrder(`Ordenado ${e.target.value}`)
+  }
+
+  function handleFilterApi(e){
+    dispatch(filterApi(e.target.value))
+}
+
+
   return (
     <div >
       <div>
-        <NavBar/>
+        {/* <NavBar/> */}
       </div>
       <Link to="/pokemon">Crear Pokemon</Link>
       <button
@@ -67,10 +79,19 @@ export default function Home() {
         <select onChange={e=> handleFilterType(e)}>
             <option value="all">Filtro por tipo</option>
             {
-              allTypes?.map(fil => {
-                return <option value={fil.name} key={fil.id}>{fil.name}</option>
+              allTypes?.map((fil,i) => {
+                return <option value={fil.name} key={i}>{fil.name}</option>
               })
             }
+        </select>
+            
+        <select onChange={e => handleOrderByAttack(e)}>
+            <option value = "all">Ordenar por ataque</option>
+            <option vallue= "poderoso">Poderoso</option>
+            <option vallue= "debil">Debil</option>
+        </select>
+        <select>
+
         </select>
       </div>
     </div>

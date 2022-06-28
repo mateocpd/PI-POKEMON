@@ -76,6 +76,8 @@ router.get("/", async (req, res, next) => {
         };
         return obj;
       });
+
+      
       let pokemonDb = await Pokemon.findAll({
         include: { model: Tipo, attributes: ["name"] },
       });

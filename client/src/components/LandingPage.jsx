@@ -7,7 +7,7 @@ let asd= 1
 export default function LandingPage(){
     return (
         <div className="background">
-            <h1 font color="white">Página de Kokemones</h1>
+            <h1>Página de Kokemones</h1>
             <Link to='/home'> 
                 <button>Ingresar</button>
             </Link>
