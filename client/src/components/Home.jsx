@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPokemons } from "../actions";
+import Card from './Card';
 import Paginado from './Paginado';
-import {orderByAbc, filterByType, orderByAttack, filterApi} from '../actions'
+import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} from '../actions'
 
 
 export default function Home() {
@@ -25,11 +26,20 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getPokemons());
-  }, []);
+  }, [dispatch]);
+
+  useEffect ( () => {
+    dispatch(getTypes())
+}, [dispatch] )
 
   function handleClick(e) {
     e.preventDefault();
     dispatch(getPokemons());
+  }
+
+  function handleReload(e) {
+    e.preventDefault();
+    dispatch(reload(e))
   }
 
   function handleOrderAsc(e) {
@@ -90,9 +100,24 @@ export default function Home() {
             <option vallue= "poderoso">Poderoso</option>
             <option vallue= "debil">Debil</option>
         </select>
-        <select>
+        <select onChange={e =>handleFilterApi(e)}>
+            <option value = "pokes">Existentes o Creados</option>
+            <option value = "all">Ordenar por ataque</option>
 
         </select>
+        <h4>Recargar Pokemons
+          <button onClick={e => {handleReload(e)}}></button>
+        </h4>
+      </div>
+
+      <div>
+        {console.log(pokemons)}
+        {   
+          pokemons?.map( p => {
+              return(
+              <Card name={p.name} img={p.image} types={p.types} key={p.id} />
+          )})
+        }
       </div>
     </div>
   );

@@ -20,13 +20,19 @@ export function getPoke(payload){
 export function getTypes(){
     return async (dispatch)=>{
         var types = await axios.get('http://localhost:3001/types')
-        return({
+        return dispatch({
             type: 'GET_TYPES',
             payload : types.data
         })
     }
 }
 
+export function reload(payload){
+    return {
+        type: 'RELOAD',
+        payload
+    }
+}
 
 export function orderByAbc (payload) {
     return {
