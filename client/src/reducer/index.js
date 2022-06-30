@@ -72,7 +72,7 @@ function rootReducer(state = initialState, action) {
         case 'FILTER_BY_TYPE':
             const allPokemons = state.pokemonsFiltered;
             const typeFiltered = action.payload === 'all'? allPokemons:
-            allPokemons.filter(pk => pk.types.map(pk => pk).includes(action.payload))
+            allPokemons.filter(pk => pk.types?.map(pk => pk).includes(action.payload))
             return{
                 ...state,
                 pokemons: typeFiltered

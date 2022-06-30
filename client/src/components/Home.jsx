@@ -6,15 +6,16 @@ import { getPokemons } from "../actions";
 import Card from './Card';
 import Paginado from './Paginado';
 import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} from '../actions'
+import NavBar from './NavBar';
 
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const allTypes = useSelector((state) => console.log('tiposHome',state.pokemonsTypes));
+  const allTypes = useSelector((state) => state.pokemonsTypes);
 
   const [current, setCurrent] = useState(1)
-  const [pokemonsPage, setPokemonsPage] = useState(12)
+  const [pokemonsPage] = useState(12)
   const [order, setOrder] = useState("")
   const lastPoke = current * pokemonsPage
   const firstPoke = lastPoke - pokemonsPage
@@ -69,16 +70,8 @@ export default function Home() {
   return (
     <div >
       <div>
-        {/* <NavBar/> */}
+        <NavBar/>
       </div>
-      <Link to="/pokemon">Crear Pokemon</Link>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Volver a cargar pokemones
-      </button>
       <Paginado pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
       <div>
         <select onChange={e => handleOrderAsc(e)}>
@@ -89,8 +82,8 @@ export default function Home() {
         <select onChange={e=> handleFilterType(e)}>
             <option value="all">Filtro por tipo</option>
             {
-              allTypes?.map((fil,i) => {
-                return <option value={fil.name} key={i}>{fil.name}</option>
+              allTypes?.map((fil) => {
+                return <option value={fil.name} key={fil.id}>{fil}</option>
               })
             }
         </select>
@@ -106,8 +99,9 @@ export default function Home() {
             <option value = "db">Creados</option>
 
         </select>
-        <h4>Recargar Pokemons
-          <button onClick={e => {handleReload(e)}}></button>
+        <h4>
+        <button
+        onClick={(e) => {handleClick(e);}}>Volver a cargar pokemones</button>
         </h4>
       </div>
 

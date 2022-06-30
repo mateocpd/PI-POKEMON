@@ -10,7 +10,7 @@ export default function Card({id,img,name,types}){
             <Link to={"/pokemon/"+id}>
                 <img src={img} alt="PokeImagen no encontrada" width="175px" height="160px"/>
             </Link>
-            <h5>Tipo/s: {types.map(type => "- " + type + " ")}</h5>
+            <h5>Tipo/s: {types?.map(type => "- " + type + " ")}</h5>
         </div>
     )
 }
