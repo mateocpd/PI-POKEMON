@@ -10,6 +10,7 @@ export function getPokemons(){
     }
 }
 
+
 export function getPoke(payload){
     return({
         type: 'GET_POKE',

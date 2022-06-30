@@ -11,7 +11,7 @@ import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} fr
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const allTypes = useSelector((state) => console.log(state.pokemonsTypes));
+  const allTypes = useSelector((state) => console.log('tiposHome',state.pokemonsTypes));
 
   const [current, setCurrent] = useState(1)
   const [pokemonsPage, setPokemonsPage] = useState(12)
@@ -97,12 +97,13 @@ export default function Home() {
             
         <select onChange={e => handleOrderByAttack(e)}>
             <option value = "all">Ordenar por ataque</option>
-            <option vallue= "poderoso">Poderoso</option>
-            <option vallue= "debil">Debil</option>
+            <option value= "poderoso">Poderoso</option>
+            <option value= "debil">Debil</option>
         </select>
         <select onChange={e =>handleFilterApi(e)}>
             <option value = "pokes">Existentes o Creados</option>
-            <option value = "all">Ordenar por ataque</option>
+            <option value = "api">Existentes</option>
+            <option value = "db">Creados</option>
 
         </select>
         <h4>Recargar Pokemons

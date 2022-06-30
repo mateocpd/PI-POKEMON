@@ -85,7 +85,7 @@ router.get("/", async (req, res, next) => {
       let pokemonBasDat = pokemonDb.map((e) => {
         let obj = {
           id: e.id,
-          name: e.data.name.charAt(0).toUpperCase() + e.data.name.slice(1),
+          name: e.name.charAt(0).toUpperCase() + e.name.slice(1),
           attack: e.attack,
           image: e.image,
           createInDb: e.createInDb,
