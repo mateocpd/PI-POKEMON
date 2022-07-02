@@ -7,6 +7,7 @@ import Card from './Card';
 import Paginado from './Paginado';
 import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} from '../actions'
 import NavBar from './NavBar';
+import SearchBar from './SearchBar';
 
 
 export default function Home() {
@@ -74,6 +75,7 @@ export default function Home() {
       </div>
       <Paginado pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
       <div>
+        <SearchBar/>
         <select onChange={e => handleOrderAsc(e)}>
             <option value="all">Orden Alfabetico</option>
             <option value="asc">A a Z</option>
@@ -110,7 +112,7 @@ export default function Home() {
         {   
           pokemons?.map( p => {
               return(
-              <Card name={p.name} img={p.image} types={p.types} key={p.id} />
+              <Card name={p.name} img={p.image} types={p.types} key={p.id} id = {p.id} />
           )})
         }
       </div>

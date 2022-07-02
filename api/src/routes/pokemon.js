@@ -95,6 +95,7 @@ router.get("/", async (req, res, next) => {
       });
       return res.json([...pokemonApi, ...pokemonBasDat]);
     } else {
+      console.log('Holi entramo')
       let pokeDb = await Pokemon.findAll({
         where: { name: { [Op.like]: `${name}` } },
         include: { model: Tipo, attributes: ["name"] },
@@ -126,7 +127,7 @@ router.get("/", async (req, res, next) => {
           resApi.data.types.length > 0
             ? resApi.data.types.map((obj) => obj.type.name)
             : [],
-      };
+          };
       if (pokeEncontrado) {
         return res.json(pokeEncontrado);
       } else {

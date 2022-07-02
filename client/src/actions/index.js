@@ -10,6 +10,36 @@ export function getPokemons(){
     }
 }
 
+export function getDetails(id){
+    return async function(dispatch) {
+        try{
+            let poke = await axios.get(`http://localhost:3001/pokemon/${id}`)
+            return dispatch({
+                type: 'GET_DETAILS',
+                payload: poke.data
+            })
+        }catch(e){
+            console.log(e)
+        }
+    }
+}
+
+
+export function getNamePoke(name){
+    return async function(dispatch) {
+        try{
+            var json = await axios.get('http://localhost:3001/pokemon?name=' + name);
+            console.log(json)
+            return dispatch({
+                type: 'GET_NAME_POKE',
+                payload: json.data
+            }) 
+        }catch(err){
+            console.error(err)
+            alert('Pokemon no encontrado')
+        }
+    }
+}
 
 export function getPoke(payload){
     return({
