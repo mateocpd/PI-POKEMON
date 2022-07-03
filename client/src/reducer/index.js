@@ -27,15 +27,15 @@ function rootReducer(state = initialState, action) {
             }
 
         
-        case 'GET_POKE':
-            let fullPoke = state.pokemonsFiltered;
-            let onePoke = fullPoke.filter(p => p.name === action.payload )
-            let noPoke = fullPoke
-            return{
-                ...state,
-                pokemons: onePoke.length ? onePoke : noPoke.concat(alert("No hay ningun pokemon con ese nombre. Mostrando todos los pokemons:")),
-                pokemonsTypes: action.payload
-            }
+        // case 'GET_POKE':
+        //     let fullPoke = state.pokemonsFiltered;
+        //     let onePoke = fullPoke.filter(p => p.name === action.payload )
+        //     let noPoke = fullPoke
+        //     return{
+        //         ...state,
+        //         pokemons: onePoke.length ? onePoke : noPoke.concat(alert("No hay ningun pokemon con ese nombre. Mostrando todos los pokemons:")),
+        //         pokemonsTypes: action.payload
+        //     }
 
         case 'RESET_DETAILS':
             return{
@@ -43,7 +43,12 @@ function rootReducer(state = initialState, action) {
                 pokemon:[]
             }
 
-
+        case 'POST_POKEMON':
+            return{
+                ...state
+            }
+        
+        
         case 'GET_DETAILS':
             return {
                 ...state,

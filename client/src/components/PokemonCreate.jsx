@@ -69,7 +69,7 @@ export default function PokeCreate() {
       typeof input.weight !== "number"
     ) {
       errors.weight = "Por favor inserte un peso valid entre 0 y 100";
-    } else if (!input.types) {
+    } else if (!input.types || input.types.lenght > 3) {
       errors.types = "Seleccionar entre 1 y 3 tipos";
     } else if (!input.img) {
       errors.img = "Por favor inserte un URL valido";
@@ -205,7 +205,7 @@ export default function PokeCreate() {
               onChange={(e) => handleChange(e)}
             />
             <h5>{input.speed}</h5>
-            {<span>{errors.speed && errors.speed}</span>}
+            {<span>{errors.name && errors.speed}</span>}
           </div>
           <br />
           <div>
@@ -220,7 +220,7 @@ export default function PokeCreate() {
               onChange={(e) => handleChange(e)}
             />
             <h5>{input.height}</h5>
-            {<span>{errors.height && errors.height}</span>}
+            {<span>{errors.name && errors.height}</span>}
           </div>
           <br />
           <div>
@@ -235,7 +235,7 @@ export default function PokeCreate() {
               onChange={(e) => handleChange(e)}
             />
             <h5>{input.weight}</h5>
-            {<span>{errors.weight && errors.weight}</span>}
+            {<span>{errors.name && errors.weight}</span>}
           </div>
         </div>
 
@@ -280,7 +280,7 @@ export default function PokeCreate() {
                 ))}
               </li>
             </ul>
-            {errors.types && <span>{errors.types}</span>}
+            {errors.name && <span>{errors.types}</span>}
           </div>
           <div>
             <label>Imagen:</label>
@@ -292,7 +292,7 @@ export default function PokeCreate() {
               placeholder="Url imagen..."
               onChange={(e) => handleChange(e)}
             />
-            {errors.img && <span>{errors.img}</span>}
+            {errors.name && <span>{errors.img}</span>}
           </div>
         <h3>
           

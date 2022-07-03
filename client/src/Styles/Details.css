@@ -1,0 +1,45 @@
+.backgroundDetails{
+    height: 100%;
+    width: 100%;
+    background-image: url('https://www.clickwallpapers.net/wp-content/uploads/2022/06/clickwallpapers-pokemon-4k-img2-scaled.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.pokeDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.leftDetails{
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.centerDetails{
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.rightDetails{
+    color: blue;
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.pkimg{
+    -webkit-filter: drop-shadow(15px 30px 1px black);
+}

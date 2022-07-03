@@ -8,6 +8,8 @@ import Paginado from './Paginado';
 import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} from '../actions'
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
+import '../Styles/Card.css'
+import '../Styles/Home.css'
 
 
 export default function Home() {
@@ -69,12 +71,12 @@ export default function Home() {
 
 
   return (
-    <div >
+    <div className= 'mainContainer'>
       <div>
         <NavBar/>
       </div>
       <Paginado pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
-      <div>
+      <div className="left">
         <SearchBar/>
         <select onChange={e => handleOrderAsc(e)}>
             <option value="all">Orden Alfabetico</option>
@@ -107,7 +109,7 @@ export default function Home() {
         </h4>
       </div>
 
-      <div>
+      <div className='cardscards'>
         {console.log(pokemons)}
         {   
           pokemons?.map( p => {
