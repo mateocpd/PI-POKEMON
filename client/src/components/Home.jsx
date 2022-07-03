@@ -72,12 +72,12 @@ export default function Home() {
 
   return (
     <div className= 'mainContainer'>
-      <div>
+      <div className='sb'>
         <NavBar/>
       </div>
-      <Paginado pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
+      <Paginado className='paginado' pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
       <div className="left">
-        <SearchBar/>
+        <SearchBar className='searchBar'/>
         <select onChange={e => handleOrderAsc(e)}>
             <option value="all">Orden Alfabetico</option>
             <option value="asc">A a Z</option>
