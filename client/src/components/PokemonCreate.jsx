@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 
 
 export default function PokeCreate(){
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const allTypes = useSelector((state) => state.pokemonsTypes)
     const [errors, setErrors] = useState({})
@@ -24,7 +24,7 @@ export default function PokeCreate(){
     })
 
     function validation(input){
-        let errors = [];
+        let errors = {};
         if(!input.name || typeof input.name !== 'string'){
             errors.name = 'Que nombre le pondrás a tu pokemon?'
         } else if(!input.hp || input.hp < 0 || input.hp > 100 || typeof input.hp !== 'number'){
@@ -107,7 +107,127 @@ export default function PokeCreate(){
 
     return(
         <div>
-            
+            <div>
+                <h2>Creacion de Pokemons</h2>
+                <h3>Crear: 
+                <button id='submit' type='submit' onClick={(e)=>handleSubmit(e)}/>
+                </h3>
+            </div>
+            <form onsubmit={(e)=> handleSubmit(e)}>
+                <div>
+                    <div>
+                        <label>Vida:</label>
+                        <input type="range" min="0" max="100" id ='1'value={input.hp} name="hp" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.hp}</h5>
+                        {
+                            errors.name && (
+                                <span >{errors.hp}</span>
+                            )
+                        }
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Ataque:</label>
+                        <input type="range" min="0" max="100" id='2' value={input.attack} name="attack" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.attack}</h5>
+                        {
+                            <span>{errors.name && (errors.attack)}</span>
+                        }
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Defensa:</label>
+                        <input type="range" min="0" max="100" id='3' value={input.defense} name="defense" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.defense}</h5>
+                        {
+                            <label>{errors.name && (errors.defense)}</label>
+                        }
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Velocidad:</label>
+                        <input type="range" min="0" max="100" id="4" value={input.speed} name="speed" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.speed}</h5>
+                        {
+                            <span>{errors.speed && (errors.speed)}</span>
+                        }
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Altura:</label>
+                        <input type="range" min="0" max="100" id="5" value={input.height} name="height" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.height}</h5>
+                        {
+                            <span>{errors.height && (errors.height)}</span>
+                        }
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Peso:</label>
+                        <input type="range" min="0" max="100" id="6" value={input.weight} name="weight" onchange={(e)=>handleChange(e)}/>
+                        <h5>{input.weight}</h5>
+                        {
+                            <span>{errors.weight && (errors.weight)}</span>
+                        }
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label>Nombre:</label>
+                        <input type="text" id="7" value={input.name} name="name" placeholder='PokeName' onChange={(e)=>handleChange(e)}/>
+                        {
+                            errors.name && (
+                                <p>{errors.name}</p>
+                            )
+                        }
+                    </div>
+
+                    <div>
+                        <label>Seleccionar Tipos:</label>
+                        <select id="8" onChange={(e)=>handleSelect(e)}>
+                            <option value="" hidden name="types">Seleccione Tipo</option> 
+                            {
+                                allTypes?.map(pk =>{
+                                    return (<option value={pk.name}key={pk.id}>{pk.name}</option>)
+                                })
+                            }
+                        </select>
+                        <ul>
+                            <li>
+                                {
+                                    input.types.map( pt =>
+                                        <div>
+                                            <h5>
+                                                { allTypes?.find( p => p.name === pt)?.name }
+                                            <button onClick={() => handleDelete(pt)}>X</button>
+                                            </h5>
+                                        </div>
+                                        )
+                                }
+                            </li>
+                        </ul>
+                        {
+                            errors.types &&(
+                                <span>{errors.types}</span>
+                            )
+                        }
+                        
+                    </div>
+                    <div>
+                        <label >Imagen:</label>
+                        <input type='url' id="9" value={input.img} name="img" placeholder="Url imagen..." onchange={(e)=>handleChange(e)}/>
+                        {
+                            errors.img && (
+                                <span>{errors.img}</span>
+                            )
+                        }
+                    </div>
+                
+                </div>
+
+            </form>
         </div>
     )
 }

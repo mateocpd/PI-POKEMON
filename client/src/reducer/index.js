@@ -23,7 +23,7 @@ function rootReducer(state = initialState, action) {
         case 'GET_NAME_POKE':
             return{
                 ...state,
-                pokemonsFiltered : action.payload
+                pokemons : action.payload
             }
 
         
@@ -37,7 +37,12 @@ function rootReducer(state = initialState, action) {
                 pokemonsTypes: action.payload
             }
 
-        
+        case 'RESET_DETAILS':
+            return{
+                ...state,
+                pokemon:[]
+            }
+
 
         case 'GET_DETAILS':
             return {

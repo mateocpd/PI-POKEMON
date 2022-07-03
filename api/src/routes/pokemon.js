@@ -129,7 +129,7 @@ router.get("/", async (req, res, next) => {
             : [],
           };
       if (pokeEncontrado) {
-        return res.json(pokeEncontrado);
+        return res.json([pokeEncontrado]);
       } else {
         return next({ message: "Pokemon no encontrado", status: 400 });
       }
@@ -166,9 +166,10 @@ router.post("/", async (req, res) => {
       height,
       weight,
       image,
+      types
     });
 
-    let typesDb = await Tipo.findAll({ where: { name: types } });
+    let typesDb = await Tipo.findAll({ where: { name: types[0] } });
     nuevopoke.addTipo(typesDb);
     res.send("Personaje creado");
   } catch (e) {

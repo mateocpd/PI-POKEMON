@@ -10,6 +10,12 @@ export function getPokemons(){
     }
 }
 
+export function resetDetails(){
+    return(
+        dispatch =>{dispatch({type: 'RESET_DETAILS'})}
+    )
+}
+
 export function getDetails(id){
     return async function(dispatch) {
         try{
@@ -55,6 +61,13 @@ export function getTypes(){
             type: 'GET_TYPES',
             payload : types.data
         })
+    }
+}
+
+export function postPoke(payload) {
+    return async function (dispatch) {
+        const pokemonCreated = await axios.post("http://localhost:3001/pokemons", payload)
+        return pokemonCreated
     }
 }
 
