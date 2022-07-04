@@ -32,6 +32,7 @@
     border-color: red;
     box-shadow: 2px 2px 5px 5px red, -2px -2px 5px 5px blue;
     background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 40px;
 }
 
 .searchBar{
@@ -74,4 +75,15 @@
     font-weight: lighter;
     justify-content: center;
     text-shadow: 2px 2px 2px rgb(25, 25, 25);
+}
+
+.select{
+    font-family: poke;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-color: black;
+    border-radius: 15px;
+    margin: 10px;
+    
 }

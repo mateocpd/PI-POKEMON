@@ -78,12 +78,12 @@ export default function Home() {
       <div className="left">
       <Paginado className='paginado' pokemonsPage= {pokemonsPage} allPokemons= {allPokemons.length} paginado={paginado}/>
         <SearchBar className='searchBar'/>
-        <select onChange={e => handleOrderAsc(e)}>
+        <select className='select' onChange={e => handleOrderAsc(e)}>
             <option value="all">Orden Alfabetico</option>
             <option value="asc">A a Z</option>
             <option value="desc">Z a A</option>
         </select>
-        <select onChange={e=> handleFilterType(e)}>
+        <select className='select' onChange={e=> handleFilterType(e)}>
             <option value="all">Filtro por tipo</option>
             {
               allTypes?.map((fil) => {
@@ -92,12 +92,12 @@ export default function Home() {
             }
         </select>
             
-        <select onChange={e => handleOrderByAttack(e)}>
+        <select className='select' onChange={e => handleOrderByAttack(e)}>
             <option value = "all">Ordenar por ataque</option>
             <option value= "poderoso">Poderoso</option>
             <option value= "debil">Debil</option>
         </select>
-        <select onChange={e =>handleFilterApi(e)}>
+        <select className='select' onChange={e =>handleFilterApi(e)}>
             <option value = "pokes">Existentes o Creados</option>
             <option value = "api">Existentes</option>
             <option value = "db">Creados</option>

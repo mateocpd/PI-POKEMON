@@ -145,7 +145,9 @@ export default function PokeCreate() {
         <h2 className='createTitle'>Creacion de Pokemons</h2>
       </div>
       <div>
-        <Link to="/home">Pokedex</Link>
+        <button className='button'>
+        <Link className='text'to="/home">Pokedex</Link>
+        </button>
       </div>
       <form className='form' onSubmit={(e) => handleSubmit(e)}>
         <div className='leftCreate'>
@@ -285,7 +287,7 @@ export default function PokeCreate() {
             {errors.name && <span>{errors.types}</span>}
           </div>
           <div>
-            <label>Imagen:</label>
+            <label className='textCreate'>Imagen: </label>
             <input
               type="url"
               id="9"

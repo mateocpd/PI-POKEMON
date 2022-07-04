@@ -116,3 +116,33 @@
     justify-content: center;
     text-shadow: 2px 2px 2px rgb(25, 25, 25);
 }
+
+.button{
+    background-color: rgb(245, 241, 241);
+    border-radius: 50px;
+    border-color: transparent;
+    color: red;
+    font-weight: lighter;
+    justify-content: center;
+    text-shadow: 2px 2px 2px rgb(25, 25, 25);
+    margin-bottom: 10px;
+}
+
+.button:hover{
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    font-weight: lighter;
+    justify-content: center;
+    text-shadow: 2px 2px 2px rgb(25, 25, 25);
+}
+
+.text{
+    
+    color: rgb(2, 0, 0);
+    font-weight: lighter;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-decoration: none;
+}
