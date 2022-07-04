@@ -4,6 +4,8 @@ import { postPoke, getTypes } from "../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
+import '../Styles/PokemonCreate.css'
+
 
 export default function PokeCreate() {
   const dispatch = useDispatch();
@@ -138,9 +140,9 @@ export default function PokeCreate() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Creacion de Pokemons</h2>
+    <div className='divForm'>
+      <div >
+        <h2 className='createTitle'>Creacion de Pokemons</h2>
       </div>
       <div>
         <Link to="/home">Pokedex</Link>

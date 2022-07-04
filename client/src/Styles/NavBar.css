@@ -1,0 +1,13 @@
+.title {
+    margin-top: 0px;
+    color: blue;
+    text-decoration: none;
+}
+
+.text2{
+    color: rgb(0, 110, 255);
+    font-weight: lighter;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../Styles/NavBar.css'
 
 export default function NavBar(){
     return (
@@ -7,8 +8,9 @@ export default function NavBar(){
             <Link to="/">
                 <img src="../logo/pokemon-pokeball.gif" alt=""/>
             </Link>
-            <li><Link to="/home">Pokedex</Link></li>
-            <li><Link to="/pokemon">Crear </Link></li>
+            <Link className="title" to="/home">Pokedex</Link>
+            <br/>
+            <Link className="text2"to="/pokemon">Crear </Link>
         </header>
     )
 }
