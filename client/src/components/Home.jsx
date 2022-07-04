@@ -104,7 +104,7 @@ export default function Home() {
 
         </select>
         <h4>
-        <button
+        <button className='button'
         onClick={(e) => {handleClick(e);}}>Volver a cargar pokemones</button>
         </h4>
       </div>

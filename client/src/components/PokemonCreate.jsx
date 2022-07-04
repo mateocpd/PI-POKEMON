@@ -147,10 +147,10 @@ export default function PokeCreate() {
       <div>
         <Link to="/home">Pokedex</Link>
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <div>
-            <label>Vida:</label>
+      <form className='form' onSubmit={(e) => handleSubmit(e)}>
+        <div className='leftCreate'>
+          <div className='range'>
+            <label className='textCreate'>Vida:</label>
             <input
               type="range"
               min="0"
@@ -160,12 +160,12 @@ export default function PokeCreate() {
               name="hp"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.hp}</h5>
-            {errors.name && <span>{errors.hp}</span>}
+            <h5 className='textCreate'>{input.hp}</h5>
+            {errors.name && <span className='errors'>{errors.hp}</span>}
           </div>
           <br />
-          <div>
-            <label>Ataque:</label>
+          <div className='range'>
+            <label className='textCreate'>Ataque:</label>
             <input
               type="range"
               min="0"
@@ -175,12 +175,12 @@ export default function PokeCreate() {
               name="attack"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.attack}</h5>
+            <h5 className='textCreate'>{input.attack}</h5>
             {<span>{errors.name && errors.attack}</span>}
           </div>
           <br />
-          <div>
-            <label>Defensa:</label>
+          <div className='range'>
+            <label className='textCreate'>Defensa:</label>
             <input
               type="range"
               min="0"
@@ -190,13 +190,13 @@ export default function PokeCreate() {
               name="defense"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.defense}</h5>
+            <h5 className='textCreate'>{input.defense}</h5>
             {<label>{errors.name && errors.defense}</label>}
           </div>
         </div>
-        <div>
-          <div>
-            <label>Velocidad:</label>
+        <div className='center'>
+          <div className='range'>
+            <label className='textCreate'>Velocidad:</label>
             <input
               type="range"
               min="0"
@@ -206,12 +206,12 @@ export default function PokeCreate() {
               name="speed"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.speed}</h5>
+            <h5 className='textCreate'>{input.speed}</h5>
             {<span>{errors.name && errors.speed}</span>}
           </div>
           <br />
-          <div>
-            <label>Altura:</label>
+          <div className='range'>
+            <label className='textCreate'>Altura:</label>
             <input
               type="range"
               min="0"
@@ -221,12 +221,12 @@ export default function PokeCreate() {
               name="height"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.height}</h5>
+            <h5 className='textCreate'>{input.height}</h5>
             {<span>{errors.name && errors.height}</span>}
           </div>
           <br />
-          <div>
-            <label>Peso:</label>
+          <div className='range'>
+            <label className='textCreate'>Peso:</label>
             <input
               type="range"
               min="0"
@@ -236,14 +236,14 @@ export default function PokeCreate() {
               name="weight"
               onChange={(e) => handleChange(e)}
             />
-            <h5>{input.weight}</h5>
+            <h5 className='textCreate'>{input.weight}</h5>
             {<span>{errors.name && errors.weight}</span>}
           </div>
         </div>
 
-        <div>
+        <div className='rightCreate'>
           <div>
-            <label>Nombre:</label>
+            <label className='textCreate'>Nombre: </label>
             <input
               type="text"
               id="7"
@@ -252,11 +252,11 @@ export default function PokeCreate() {
               placeholder="PokeName"
               onChange={(e) => handleChange(e)}
             />
-            {errors.name && <p>{errors.name}</p>}
+            {errors.name && <p className='errors'>{errors.name}</p>}
           </div>
 
           <div>
-            <label>Seleccionar Tipos:</label>
+            <label className='textCreate'>Seleccionar Tipos: </label>
             <select id="8" onChange={(e) => handleSelect(e)}>
               <option value="" hidden name="types">
                 Seleccione Tipo
@@ -269,19 +269,19 @@ export default function PokeCreate() {
                 );
               })}
             </select>
-            <ul>
-              <li>
+            
+              
                 {input.types.map((pt) => (
                   <div>
-                    <h4>{pt}</h4>
-                    <h5>
+                    <h4 >{pt}</h4>
+                    <h5 className='textCreate'>
                       {allTypes?.find((p) => p.name === pt)?.name}
-                      <button onClick={() => handleDelete(pt)}>X</button>
+                      <input type='button' className='deleteType'  onClick={() => handleDelete(pt)}value='X'/>
                     </h5>
                   </div>
                 ))}
-              </li>
-            </ul>
+              
+            
             {errors.name && <span>{errors.types}</span>}
           </div>
           <div>
@@ -298,7 +298,7 @@ export default function PokeCreate() {
           </div>
         <h3>
           
-          <button id="submit" type="submit" onClick={(e) => handleSubmit(e)} > Crear</button>
+          <button id="submit" className='titleCreate' type="submit" onClick={(e) => handleSubmit(e)} > Crear</button>
         </h3>
         </div>
       </form>

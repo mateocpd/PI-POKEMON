@@ -8,10 +8,10 @@ export default function Paginado ({pokemonsPage, allPokemons, paginado}) {
     }
     return(
         <nav>
-            <ul>
+            <ul className='paginado'>
                 {pageNumbers && pageNumbers.map(number =>(
                     
-                        <button onClick={()=>paginado(number)}>{number}</button>
+                        <button className='pageNumber' onClick={()=>paginado(number)}>{number}</button>
                 ))}
             </ul>
         </nav>
