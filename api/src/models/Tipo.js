@@ -1,14 +1,13 @@
 const { DataTypes, NUMBER } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("tipo", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey : true,
-    },
+  sequelize.define("type", {
+  
     name: {
       type: DataTypes.STRING,
       unique: true,
     },
+  },{
+    timestamps: false
   });
 };

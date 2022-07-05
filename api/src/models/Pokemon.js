@@ -14,25 +14,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vida: {
+    hp: {
       type: DataTypes.INTEGER,
     },
-    fuerza: {
+    
+    defense: {
       type: DataTypes.INTEGER,
     },
-    defensa: {
+    attack: {
       type: DataTypes.INTEGER,
     },
-    ataque: {
+    speed: {
       type: DataTypes.INTEGER,
     },
-    velocidad: {
-      type: DataTypes.INTEGER,
-    },
-    altura: {
+    height: {
       type: DataTypes.DECIMAL,
     },
-    peso: {
+    weight: {
       type: DataTypes.DECIMAL,
     },
     createInDb: {
@@ -40,6 +38,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     },
+    image: {
+      type: DataTypes.STRING
+    }
     
   },
   {timestamps: false});

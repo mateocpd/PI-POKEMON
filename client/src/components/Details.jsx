@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {getDetails,resetDetails} from '../actions';
 import NavBar from './NavBar';
+import { Link } from "react-router-dom";
 import '../Styles/Details.css';
 
 export default function Detail(){
@@ -16,7 +17,7 @@ export default function Detail(){
         dispatch(resetDetails())
     }, [dispatch])
 
-
+    
     return(
         <div className='backgroundDetails'>
             {
@@ -25,6 +26,12 @@ export default function Detail(){
                     <p>Cargando... </p>
                 </div>
                 :
+                <div>
+                    <div >
+                    <button className='button'>
+                    <Link className='text'to="/home">Pokedex</Link>
+                    </button>
+                    </div>
                 <div className='pokeDetails'>
                     <div className ='centerDetails'>
                         <h1>Pokemon: {pokemon.name.toUpperCase()}</h1>
@@ -34,7 +41,7 @@ export default function Detail(){
                     
                     <div className="leftDetails">
                         <h3>ID: {pokemon.id}</h3>  
-                        <h3>Vida: {pokemon.life}</h3>  
+                        <h3>Vida: {pokemon.hp}</h3>  
                         <h3>Ataque: {pokemon.attack}</h3>  
                         <h3>Defensa: {pokemon.defense}</h3>  
                         <h3>Velocidad: {pokemon.speed}</h3>  
@@ -46,6 +53,7 @@ export default function Detail(){
                     </div>
                 
 
+                </div>
                 </div>
             }
         </div>

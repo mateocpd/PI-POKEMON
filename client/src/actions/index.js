@@ -18,18 +18,15 @@ export function resetDetails(){
 
 export function getDetails(id){
     return async function(dispatch) {
-        try{
-            let poke = await axios.get(`http://localhost:3001/pokemon/${id}`)
-            return dispatch({
+        
+             axios.get(`http://localhost:3001/pokemon/${id}`).then((poke)=> {return dispatch({
                 type: 'GET_DETAILS',
                 payload: poke.data
-            })
-        }catch(e){
-            console.log(e)
-        }
+            })} ).catch((error)=> {console.log(error);})
+            
+        
     }
 }
-
 
 export function getNamePoke(name){
     return async function(dispatch) {

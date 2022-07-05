@@ -22,7 +22,7 @@ export default function PokeCreate() {
     height: 50,
     weight: 50,
     types: [],
-    img: "",
+    image: "",
   });
 
   function validation(input) {
@@ -73,8 +73,8 @@ export default function PokeCreate() {
       errors.weight = "Por favor inserte un peso valid entre 0 y 100";
     } else if (!input.types || input.types.lenght > 3) {
       errors.types = "Seleccionar entre 1 y 3 tipos";
-    } else if (!input.img) {
-      errors.img = "Por favor inserte un URL valido";
+    } else if (!input.image) {
+      errors.image = "Por favor inserte un URL valido";
     }
     return errors;
   }
@@ -102,6 +102,12 @@ export default function PokeCreate() {
       ...input,
       types: [...input.types, e.target.value],
     });
+    setErrors(
+      validation({
+        ...input,
+        [{...input.types}]:e.target.value
+      })
+    )
   }
 
   function handleSubmit(e) {
@@ -111,8 +117,8 @@ export default function PokeCreate() {
       return alert("No es posible crear un pokemon sin un nombre");
     } else if (!input.types.length) {
       e.preventDefault();
-      return alert("Por favor seleccione al menos 1 tipo");
-    } else if (!input.img) {
+      return alert("aPor favor seleccione al menos 1 tipo");
+    } else if (!input.image) {
       e.preventDefault();
       return alert("Por favor inserte un URL valido");
     }
@@ -127,7 +133,7 @@ export default function PokeCreate() {
       height: 0,
       weight: 0,
       types: [],
-      img: "",
+      image: "",
     });
     navigate.push("/home");
   }
@@ -291,12 +297,12 @@ export default function PokeCreate() {
             <input
               type="url"
               id="9"
-              value={input.img}
-              name="img"
+              value={input.image}
+              name="image"
               placeholder="Url imagen..."
               onChange={(e) => handleChange(e)}
             />
-            {errors.name && <span>{errors.img}</span>}
+            {errors.name && <span>{errors.image}</span>}
           </div>
         <h3>
           

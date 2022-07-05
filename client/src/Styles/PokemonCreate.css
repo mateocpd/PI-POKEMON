@@ -1,11 +1,13 @@
 .divForm{
-    height: 46.8vw;
+    height: 100%;
     width: 100vw;
     background-image: url('https://www.clickwallpapers.net/wp-content/uploads/2022/06/clickwallpapers-pokemon-4k-img2-scaled.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    position: fixed;
+    overflow-y: scroll;
 }
 
 .title-submit{

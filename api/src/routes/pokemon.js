@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const axios = require("axios");
-const { Pokemon, Tipo } = require("../db");
+const { Pokemon, Type } = require("../db");
 const { Op } = require("sequelize");
 
 const idSearchApi = async (id) => {
@@ -21,6 +21,7 @@ const idSearchApi = async (id) => {
     };
   } catch (e) {
     console.log(e);
+    return false;
   }
 };
 
@@ -28,7 +29,7 @@ const idSearchDB = async (id) => {
   try {
     const poke = await Pokemon.findByPk(id, {
       include: {
-        model: Tipo,
+        model: Type,
         attributes: ["name"],
         through: {
           attributes: [],
@@ -79,8 +80,9 @@ router.get("/", async (req, res, next) => {
 
       
       let pokemonDb = await Pokemon.findAll({
-        include: { model: Tipo, attributes: ["name"] },
+        include: { model: Type, attributes: ["name"] },
       });
+      console.log(pokemonDb);
 
       let pokemonBasDat = pokemonDb.map((e) => {
         let obj = {
@@ -89,7 +91,7 @@ router.get("/", async (req, res, next) => {
           attack: e.attack,
           image: e.image,
           createInDb: e.createInDb,
-          types: e.Tipos?.map((obj) => obj.name),
+          types: e.types?.map((obj) => obj.name),
         };
         return obj;
       });
@@ -98,7 +100,7 @@ router.get("/", async (req, res, next) => {
       console.log('Holi entramo')
       let pokeDb = await Pokemon.findAll({
         where: { name: { [Op.like]: `${name}` } },
-        include: { model: Tipo, attributes: ["name"] },
+        include: { model: Type, attributes: ["name"] },
       });
       let pokemonDb = pokeDb.map((e) => {
         let obj = {
@@ -106,7 +108,7 @@ router.get("/", async (req, res, next) => {
           name: e.name.charAt(0).toUpperCase() + e.name.slice(1).toLowerCase(),
           image: e.image,
           createInDb: e.createInDb,
-          types: e.tipos.map((obj) => obj.name),
+          types: e.types.map((obj) => obj.name),
         };
         return obj;
       });
@@ -154,12 +156,12 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let = { name, life, attack, defense, speed, height, weight, types, image } = req.body;
-
+  let = { name, hp, attack, defense, speed, height, weight, types, image } = req.body;
+  console.log(req.body);
   try {
     let nuevopoke = await Pokemon.create({
       name,
-      life,
+      hp,
       attack,
       defense,
       speed,
@@ -169,8 +171,9 @@ router.post("/", async (req, res) => {
       types
     });
 
-    let typesDb = await Tipo.findAll({ where: { name: types[0] } });
-    nuevopoke.addTipo(typesDb);
+    let typesDb = await Type.findAll({ where: { name: types } });
+    console.log(typesDb);
+    nuevopoke.addTypes(typesDb);
     res.send("Personaje creado");
   } catch (e) {
     console.log(e);
