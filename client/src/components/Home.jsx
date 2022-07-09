@@ -2,10 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPokemons } from "../actions";
 import Card from './Card';
 import Paginado from './Paginado';
-import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, reload} from '../actions'
+import {orderByAbc, filterByType, orderByAttack, filterApi, getTypes, getPokemons} from '../actions'
 import NavBar from './NavBar';
 import SearchBar from './SearchBar';
 import '../Styles/Card.css'
@@ -39,12 +38,13 @@ export default function Home() {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getPokemons());
+    setCurrent(1);
   }
 
-  function handleReload(e) {
-    e.preventDefault();
-    dispatch(reload(e))
-  }
+  // function handleReload(e) {
+  //   e.preventDefault();
+  //   dispatch(reload(e))
+  // }
 
   function handleOrderAsc(e) {
     e.preventDefault();
@@ -56,6 +56,7 @@ export default function Home() {
   function handleFilterType(e){
     e.preventDefault();
     dispatch(filterByType(e.target.value))
+    setCurrent(1);
   }
 
   function handleOrderByAttack(e){
@@ -67,6 +68,7 @@ export default function Home() {
 
   function handleFilterApi(e){
     dispatch(filterApi(e.target.value))
+    setCurrent(1);
 }
 
 

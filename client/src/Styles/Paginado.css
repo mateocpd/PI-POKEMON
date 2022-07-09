@@ -27,7 +27,8 @@
 }
 .centro{
   border-radius:50%;
+  padding: 1px;
   border-color:black;
   background-color: white;
-  width: 10px;
+  width: 15px;
 }

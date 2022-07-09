@@ -168,7 +168,7 @@ router.post("/", async (req, res) => {
       height,
       weight,
       image,
-      types
+      types,
     });
 
     let typesDb = await Type.findAll({ where: { name: types } });

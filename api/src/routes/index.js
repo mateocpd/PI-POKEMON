@@ -14,7 +14,7 @@ const router = Router();
 router.use("/pokemon", pokemon);
 router.use('/types', types)
 
-
+//cargo los types a mi db
 async function loadTypes(){
     let tiposApi = await axios.get("https://pokeapi.co/api/v2/type");
     tiposApi = tiposApi.data.results.filter((e) => e.name !== "unknown");

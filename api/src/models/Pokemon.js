@@ -40,6 +40,11 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING
+    },
+    createdBy: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue:"mateo"
     }
     
   },
