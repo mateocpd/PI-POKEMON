@@ -116,7 +116,7 @@ export default function Home() {
         {   
           pokemons?.map( p => {
               return(
-              <Card name={p.name} img={p.image} types={p.types} key={p.id} id = {p.id} />
+              <Card  name={p.name} img={p.image} types={p.types} key={p.id} id = {p.id} />
           )})
         }
       </div>
