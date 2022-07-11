@@ -15,7 +15,7 @@ export default function PokeCreate() {
 
   const [input, setInput] = useState({
     name: "",
-    hp: 50,
+    life: 50,
     attack: 50,
     defense: 50,
     speed: 50,
@@ -30,12 +30,12 @@ export default function PokeCreate() {
     if (!input.name || typeof input.name !== "string") {
       errors.name = "Que nombre le pondrás a tu pokemon?";
     } else if (
-      !input.hp ||
-      input.hp < 0 ||
-      input.hp > 100 ||
-      typeof input.hp !== "number"
+      !input.life ||
+      input.life < 0 ||
+      input.life > 100 ||
+      typeof input.life !== "number"
     ) {
-      errors.hp = "Por favor inserte un numero de vida valido entre 0 y 100";
+      errors.life = "Por favor inserte un numero de vida valido entre 0 y 100";
     } else if (
       !input.attack ||
       input.attack < 0 ||
@@ -126,7 +126,7 @@ export default function PokeCreate() {
     alert("Pokemon creado con exito!");
     setInput({
       name: "",
-      hp: 0,
+      life: 0,
       attack: 0,
       defense: 0,
       speed: 0,
@@ -164,12 +164,12 @@ export default function PokeCreate() {
               min="0"
               max="100"
               id="1"
-              value={input.hp}
-              name="hp"
+              value={input.life}
+              name="life"
               onChange={(e) => handleChange(e)}
             />
-            <h5 className='textCreate'>{input.hp}</h5>
-            {errors.name && <span className='errors'>{errors.hp}</span>}
+            <h5 className='textCreate'>{input.life}</h5>
+            {errors.name && <span className='errors'>{errors.life}</span>}
           </div>
           <br />
           <div className='range'>

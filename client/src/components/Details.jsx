@@ -41,7 +41,7 @@ export default function Detail(){
                     
                     <div className="leftDetails">
                         <h3>ID: {pokemon.id}</h3>  
-                        <h3>Vida: {pokemon.hp}</h3>  
+                        <h3>Vida: {pokemon.life}</h3>  
                         <h3>Ataque: {pokemon.attack}</h3>  
                         <h3>Defensa: {pokemon.defense}</h3>  
                         <h3>Velocidad: {pokemon.speed}</h3>  

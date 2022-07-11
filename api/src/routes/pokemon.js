@@ -156,12 +156,12 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  let = { name, hp, attack, defense, speed, height, weight, types, image } = req.body;
+  let = { name, life, attack, defense, speed, height, weight, types, image } = req.body;
   console.log(req.body);
   try {
     let nuevopoke = await Pokemon.create({
       name,
-      hp,
+      life,
       attack,
       defense,
       speed,
