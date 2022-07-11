@@ -12,7 +12,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 router.use("/pokemon", pokemon);
-router.use('/types', types)
+router.use('/types', types); 
 
 //cargo los types a mi db
 async function loadTypes(){

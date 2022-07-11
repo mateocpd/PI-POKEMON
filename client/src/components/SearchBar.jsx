@@ -22,7 +22,7 @@ export default function Search(){
 
     return (
         <div>
-            <input className="searchInput" type = "text" placeholder = "Buscar Pokemon..." onChange={(e)=> handleSearchBar(e)}/>
+            <input className="searchInput" type = "text" placeholder = "         Buscar Pokemon..." onChange={(e)=> handleSearchBar(e)}/>
             <button className="pokeSearch" type = "submit" onClick={(e)=> handleSubmit(e)}>Buscar</button>
         </div>
     )

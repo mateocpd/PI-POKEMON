@@ -8,3 +8,7 @@
     overflow: hidden;
     position: fixed;
 }
+
+.container{
+    margin-top:220px
+}

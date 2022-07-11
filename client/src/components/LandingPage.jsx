@@ -6,7 +6,9 @@ import '../Styles/LandingPage.css';
 export default function LandingPage(){
     return (
         <div className="background">
-            <h1>Página de Kokemones</h1>
+            <div className="container">
+            <h1>Página de Pokemones</h1>
+            </div>
             <Link to='/home'> 
                 <button>Ingresar</button>
             </Link>

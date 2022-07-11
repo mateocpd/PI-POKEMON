@@ -15,12 +15,12 @@ export default function PokeCreate() {
 
   const [input, setInput] = useState({
     name: "",
-    life: 50,
-    attack: 50,
-    defense: 50,
-    speed: 50,
-    height: 50,
-    weight: 50,
+    life: 75,
+    attack: 75,
+    defense: 75,
+    speed: 75,
+    height: 75,
+    weight: 75,
     types: [],
     image: "",
   });
@@ -162,7 +162,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="1"
               value={input.life}
               name="life"
@@ -177,7 +177,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="2"
               value={input.attack}
               name="attack"
@@ -192,7 +192,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="3"
               value={input.defense}
               name="defense"
@@ -208,7 +208,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="4"
               value={input.speed}
               name="speed"
@@ -223,7 +223,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="5"
               value={input.height}
               name="height"
@@ -238,7 +238,7 @@ export default function PokeCreate() {
             <input
               type="range"
               min="0"
-              max="100"
+              max="150"
               id="6"
               value={input.weight}
               name="weight"
